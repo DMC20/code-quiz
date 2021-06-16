@@ -1,76 +1,132 @@
-var quizContainerEl = Array.from(document.getElementById("question"));
-var timerEl = document.getElementById('countdown');
-var startBtnEl = document.getElementById("start");
-var prevBtnEl = document.getElementById('previous')
-var nextBtnEl = document.getElementById("next");
-var resultsContainerEl = document.getElementById("results");
-// quiz questions, choices, and answers
-var quizQuestions = [ {
+//  quiz questions/choices/answerts variable
+var quizQuestions = [ 
+  {
     question: "What is an array?",
-    answers: {
-        a: "A single variable that stores multiple events",
-        b: "",
-        c: "",
-        d: "IDK",
-    },
-    correctAnswer: "a",
+    answers: [
+       "A single variable that stores multiple events",
+         "s",
+       "q",
+        "IDK",
+    ],
+    correctAnswer: "A single variable that stores multiple events",
 },
 {
-    question: "What are the two values of a Boolean?",
-    answers: {
-        a: "Yes and No",
-        b: "Now and later",
-        c: "True and False",
-        d: "IDK",
-    },
-    correctAnswer: "c",
+  question: "What are the two values of a Boolean?",
+  answers: {
+      a: "Yes and No",
+      b: "Now and later",
+      c: "True and False",
+      d: "IDK",
+  },
+  correctAnswer: "c",
 },
 {
-    question: "What is a string?",
-    answers: {
-        a: "It is a shoelace ",
-        b: "Stores and manipulates text",
-        c: "A Guitar note",
-        d: "IDK",
-    },
-    correctAnswer: "b",
+  question: "What is a string?",
+  answers: {
+      a: "It is a shoelace ",
+      b: "Stores and manipulates text",
+      c: "A Guitar note",
+      d: "IDK",
+  },
+  correctAnswer: "b",
 },
 {
-    questions: "What does console.log do",
-    answers: {
-        a: "Creates an arguement",
-        b: "Creates an pnject",
-        c: "Writes a message to the console",
-        d: "IDK",
-    },
-    correctAnswer: "c",
+  questions: "What does console.log do",
+  answers: {
+      a: "Creates an arguement",
+      b: "Creates an pnject",
+      c: "Writes a message to the console",
+      d: "IDK",
+  },
+  correctAnswer: "c",
 },
 {
-    questions: "What is a function?",
-    answers: {
-        a: "A building block in JS",
-        b: "An expression",
-        c: "A debugger",
-        d: "IDK",
-    },
-    correctAnswer: "a",
+  questions: "What is a function?",
+  answers: {
+      a: "A building block in JS",
+      b: "An expression",
+      c: "A debugger",
+      d: "IDK",
+  },
+  correctAnswer: "a",
 }
 ];
-// quiz start score of 0
+// variables for targeting html elements/atrrtibutes
+var timerEl = document.getElementById('countdownTimer');
+var startBtnEl = document.getElementById("startTimer");
+var startScreen = document.getElementById('startScreen');
+var choices = document.getElementById("choices");
+var resultsContainerEl = document.getElementById("results");
+var containerEl = document.getElementById('container');
+var quizArea = document.getElementById('quizArea');
+var questArea = document.getElementById('questions');
+
+// quiz start score of 0 
 var score = 0;
+// start on first question
 var currentQuestion = 0
-var ask = []
-var responses = []
+
+// timer ***change back to 15sec***
+var timeLeft = 10;
+var holdTime = 0;
+
+
+
+
+
+function checkAnswer(){
+  console.log('YO', this.value);
+  var choice = this.value;
+  var correctAn = quizQuestions[currentQuestion].correctAnswer;
+  if(choice === correctAn ){
+    alert('correct')
+   
+  } else{
+    alert('wrong')
+  }
+
+  currentQuestion++;
+  startQuiz();
+
+}
+
+
 
 // start quiz function 
 function startQuiz () {
- 
+
+
+
+
+
+
+ //render question
+  var quest = quizQuestions[currentQuestion].question;
+  questArea.textContent = quest;
+
+
+ //render choices as buttons
+ var options = quizQuestions[currentQuestion].answers;
+ console.log(options)
+
+ for (let i = 0; i < options.length; i++) {
+   var btn = document.createElement('button');
+   btn.value = options[i];
+   btn.textContent = options[i];
+    btn.onclick = checkAnswer;
+   choices.appendChild(btn);
+   
+ }
+ //     -- create a button
+ //     --assign it value
+ //     --assign it context
+ //     --assign it an onclick function
+ //         ..check if user answered correctly or not
+  
 };
 
 // question prompt function
 function testQuestions () {
-  responses = quizQuestions[currentQuestion].responses;
-  ask = quizQuestions[currentQuestion].ask;
 };
 
 // show quiz result function 
@@ -79,32 +135,36 @@ function quizResults () {
 };
 
 // timer function
-function countdown() {
-    // change back to 15sec
-    var timeLeft = 2;
-  
-    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-    var timeInterval = setInterval(function() {
-      // As long as the `timeLeft` is greater than 1
-      if (timeLeft > 1) {
-        // Set the `textContent` of `timerEl` to show the remaining seconds
-        timerEl.textContent = timeLeft + ' seconds remaining';
-        // Decrement `timeLeft` by 1
-        timeLeft--;
-      } else if (timeLeft === 1) {
-        // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
-        timerEl.textContent = timeLeft + ' second remaining';
-        timeLeft--;
-      } else {
-        // Once `timeLeft` gets to 0, set `timerEl` to an empty string
-        timerEl.textContent = '';
-        // Use `clearInterval()` to stop the timer
-        clearInterval(timeInterval);
-        // Call the `displayMessage()` function
-        displayMessage();
+startBtnEl.addEventListener("click", function(){
+
+  //      --hide start screen
+startScreen.className = 'hide';
+//      --show quizArea
+quizArea.className = 'show';
+
+
+  startQuiz();
+
+
+  if (holdTime === 0) {
+    holdTime = setInterval(function() {
+      timeLeft--;
+      holdTime.textContent = "You have " + timeLeft;
+
+
+
+
+    timerEl.textContent =timeLeft
+
+      if (timeLeft < 0) {
+        clearInterval(holdTime);
+        //timesUp();
+        timerEl.textContent = "You have ran out of time!";
       }
     }, 1000);
+    
   }
+})
 
 
 // // end message after clicking start
@@ -114,6 +174,4 @@ function countdown() {
 // start quiz function
 //startQuiz();
 
-nextBtnEl.addEventListener('click', next);
-prevBtnEl.addEventListener("click", previous);
-startBtnEl.addEventListener("click", submit);
+// startBtnEl.addEventListener("click", submit);

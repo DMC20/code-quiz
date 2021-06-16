@@ -7,20 +7,38 @@
     <title>Coding Quiz</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-<header>
-    <h1 class="page-title">Lets test your knowledge on Javascript! Are you ready?</h1>
-</header>
+
 <body>
-    <!-- Quiz container -->
+   <header>
+    <h1 class="page-title">Lets test your knowledge on Javascript! Are you ready?</h1>
+</header> 
+<!-- Quiz container -->
     <div id="container">
-        <div id="countdownTimer"></div>
-        <!-- Question/answer section -->
-        <h2>Click "Start" when you are ready to begin!</h2>
-        <ul id="correctAnswer"></ul>
-        <button id="start">Start</button>
+
+        <!-- Start Div -->
+        <div id='startScreen' class='show'>
+            <!-- Explation of app -->
+             <h2>Click "Start" when you are ready to begin!</h2>
+          <button id="startTimer">Start</button>
+        </div>
+
+        <!-- //QUIZ AREA -->
+
+        <div id='quizArea' class='hide'>
+             <p>Timer:<span id="countdownTimer"></span></p>
+            <h2 id='questions'></h2>
+            <div id='choices'></div>
+        </div>
+
+        <!-- End Screen -->
+        <div id='endDiv' class='hide'>
+            <h2>END RESULT</h2>
+        </div>
+
+      
     </div>
     <!-- Results section -->
-    <button id="results">Results</button>
+  
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

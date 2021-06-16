@@ -16,3 +16,11 @@ h1 {
     background-color: #247BA0;
     color: white;
   }
+
+.hide {
+  display: none;
+}
+
+.show{
+  display: block;
+}
