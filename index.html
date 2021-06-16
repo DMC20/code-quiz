@@ -9,17 +9,18 @@
 </head>
 <header>
     <h1 class="page-title">Lets test your knowledge on Javascript! Are you ready?</h1>
-    <h2 id="countdown"></h2>
-    <button id="start">Start</button>
-    <p id="main"></p>
 </header>
 <body>
-    <main class="container">
-        <h2 id="quiz-questions">Please make your selection!</h2>
-        <div id="quiz"></div>
-        <button id="submit">Submit</button>
-        <div id="results"></div> 
-    </main>
+    <!-- Quiz container -->
+    <div id="container">
+        <div id="countdownTimer"></div>
+        <!-- Question/answer section -->
+        <h2>Click "Start" when you are ready to begin!</h2>
+        <ul id="correctAnswer"></ul>
+        <button id="start">Start</button>
+    </div>
+    <!-- Results section -->
+    <button id="results">Results</button>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
