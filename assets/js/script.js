@@ -18,7 +18,7 @@ var quizQuestions = [
       c: "True and False",
       d: "IDK",
   },
-  correctAnswer: "c",
+  correctAnswer: "True and False",
 },
 {
   question: "What is a string?",
@@ -28,7 +28,7 @@ var quizQuestions = [
       c: "A Guitar note",
       d: "IDK",
   },
-  correctAnswer: "b",
+  correctAnswer: "Stores and manipulates text",
 },
 {
   questions: "What does console.log do",
@@ -38,7 +38,7 @@ var quizQuestions = [
       c: "Writes a message to the console",
       d: "IDK",
   },
-  correctAnswer: "c",
+  correctAnswer: "Writes a message to the console",
 },
 {
   questions: "What is a function?",
@@ -48,7 +48,7 @@ var quizQuestions = [
       c: "A debugger",
       d: "IDK",
   },
-  correctAnswer: "a",
+  correctAnswer: "A building block in JS",
 }
 ];
 // variables for targeting html elements/atrrtibutes
@@ -71,11 +71,8 @@ var timeLeft = 10;
 var holdTime = 0;
 
 
-
-
-
 function checkAnswer(){
-  console.log('YO', this.value);
+  console.log('test', this.value);
   var choice = this.value;
   var correctAn = quizQuestions[currentQuestion].correctAnswer;
   if(choice === correctAn ){
@@ -90,15 +87,8 @@ function checkAnswer(){
 
 }
 
-
-
 // start quiz function 
 function startQuiz () {
-
-
-
-
-
 
  //render question
   var quest = quizQuestions[currentQuestion].question;
@@ -113,7 +103,7 @@ function startQuiz () {
    var btn = document.createElement('button');
    btn.value = options[i];
    btn.textContent = options[i];
-    btn.onclick = checkAnswer;
+   btn.onclick = checkAnswer;
    choices.appendChild(btn);
    
  }
@@ -150,11 +140,7 @@ quizArea.className = 'show';
     holdTime = setInterval(function() {
       timeLeft--;
       holdTime.textContent = "You have " + timeLeft;
-
-
-
-
-    timerEl.textContent =timeLeft
+      timerEl.textContent =timeLeft
 
       if (timeLeft < 0) {
         clearInterval(holdTime);
