@@ -149,6 +149,7 @@ quizArea.className = 'show';
         clearInterval(holdTime);
         //timesUp();
         alert("You have ran out of time!");
+        alert("You got " + score + '/' + quizQuestions.length);
         
 
         // hide quiz screen
