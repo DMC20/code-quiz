@@ -166,7 +166,8 @@ quizArea.className = 'show';
 }
 )
 
-results.addEventListener('click',function(gameOver) {
+results.addEventListener('click',function() {
+  window.location.replace('./end.html')
   
 } )
 // function endGame () {
