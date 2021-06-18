@@ -34,7 +34,7 @@ var quizQuestions = [
   questions: "What does console.log do",
   answers: [
        "Creates an arguement",
-       "Creates an project",
+       "Creates an object",
        "Writes a message to the console",
        "I Don't Know!",
   ],
