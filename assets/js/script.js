@@ -6,7 +6,7 @@ var quizQuestions = [
         "A single variable that stores multiple events",
         "It is a feature",
         "A button",
-        "IDK",
+        "I Don't Know",
     ],
     correctAnswer: "A single variable that stores multiple events",
 },
@@ -16,7 +16,7 @@ var quizQuestions = [
        "Yes and No",
        "Now and later",
        "True and False",
-       "IDK",
+       "I Don't Know",
   ],
   correctAnswer: "True and False",
 },
@@ -26,7 +26,7 @@ var quizQuestions = [
        "It is a shoelace ",
        "Stores and manipulates text",
        "A Guitar note",
-       "IDK",
+       "I Don't Know",
   ],
   correctAnswer: "Stores and manipulates text",
 },
@@ -34,9 +34,9 @@ var quizQuestions = [
   questions: "What does console.log do",
   answers: [
        "Creates an arguement",
-       "Creates an pnject",
+       "Creates an project",
        "Writes a message to the console",
-       "IDK",
+       "I Don't Know!",
   ],
   correctAnswer: "Writes a message to the console",
 },
@@ -46,7 +46,7 @@ var quizQuestions = [
        "A building block in JS",
        "An expression",
        "A debugger",
-       "IDK",
+       "I Don't Know!",
   ],
   correctAnswer: "A building block in JS",
 }
@@ -60,6 +60,7 @@ var containerEl = document.getElementById('container');
 var quizArea = document.getElementById('quizArea');
 var questArea = document.getElementById('questions');
 var results = document.getElementById('endDiv');
+var score = document.getAnimations('results');
 
 // quiz start score of 0 
 var score = 0;
@@ -148,23 +149,37 @@ quizArea.className = 'show';
         clearInterval(holdTime);
         //timesUp();
         alert("You have ran out of time!");
+        
+
+        // hide quiz screen
+        quizArea.className = 'hide';
+
+        // show resukts button
+        results.className = 'show';
+        //console.log(results.className);
+
+
       }
     }, 1000);
     
   }
-})
+}
+)
 
-function resukts () {
-  questions.innerHTML = '';
-  timeLeft = '';
+results.addEventListener('click',function(gameOver) {
+  
+} )
+// function endGame () {
+
+//   results.className = 'show';
+// document.getElementById('results').className = 'show';
+
+//   var createH3 = document.createElement('h3');
+//   createH3.setAttribute("id", "createH3");
+
+//   questionsDiv.appendChild(createH3);
 
 
-  var createH3 = document.createElement('h3');
-  createH3.setAttribute("id", "createH3");
-
-  questionsDiv.appendChild(createH3);
-
-} 
 
 // at the bottom should be a click event function that creates a form for the person completing the quiz
 // // the form consist of if else conditionals and a var that creates a score total. It wouls be written out in this form:
