@@ -1,7 +1,14 @@
-h1 {
+
+h1,
+h2,
+p,
+.choices,
+.startScreem,
+.startTimer {
     text-align: center;
     font-size: 34px;
     font-weight: 700;
+    justify-content: center;
   }
   
   .container {
@@ -9,6 +16,7 @@ h1 {
   }
   
   button {
+    text-align: center;
     padding: 10px;
     margin: 24px;
     cursor: pointer;
@@ -16,6 +24,7 @@ h1 {
     background-color: #247BA0;
     color: white;
   }
+
 
 .hide {
   display: none;

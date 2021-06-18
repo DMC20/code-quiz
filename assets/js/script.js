@@ -3,9 +3,9 @@ var quizQuestions = [
   {
     question: "What is an array?",
     answers: [
-       "A single variable that stores multiple events",
-         "It is a feature",
-       "A button",
+        "A single variable that stores multiple events",
+        "It is a feature",
+        "A button",
         "IDK",
     ],
     correctAnswer: "A single variable that stores multiple events",
@@ -56,10 +56,10 @@ var timerEl = document.getElementById('countdownTimer');
 var startBtnEl = document.getElementById("startTimer");
 var startScreen = document.getElementById('startScreen');
 var choices = document.getElementById("choices");
-var resultsContainerEl = document.getElementById("results");
 var containerEl = document.getElementById('container');
 var quizArea = document.getElementById('quizArea');
 var questArea = document.getElementById('questions');
+var results = document.getElementById('endDiv');
 
 // quiz start score of 0 
 var score = 0;
@@ -69,7 +69,7 @@ var currentQuestion = 0
 // timer ***change back to 15sec***
 var timeLeft = 15;
 var holdTime = 0;
-
+var penalty = 3;
 var btn;
 
 function checkAnswer(){
@@ -77,16 +77,24 @@ function checkAnswer(){
   var choice = this.value;
   var correctAn = quizQuestions[currentQuestion].correctAnswer;
   if(choice === correctAn ){
-    alert('correct')
-   
+    score++;
+    alert('Correct')  
   } else{
-    alert('wrong')
+    alert('Incorrect, you have lost 3 seoconds')
+    // 3 sec deducted for incorrect answer
+    timeLeft = timeLeft - penalty;
   }
+
+  document.getElementById('choices').innerHTML = ''
+
 
   currentQuestion++;
   
   startQuiz();
+
+  alert("You got " + score + '/' + quizQuestions.length);
 }
+
 
 // start quiz function 
 function startQuiz () {
@@ -99,7 +107,6 @@ function startQuiz () {
  //render choices as buttons
  var options = quizQuestions[currentQuestion].answers;
 //  console.log('currentQuestion = ', currentQuestion);
-//  console.log('options = ', options);
 
 // console.log(options.length);
 
@@ -117,11 +124,6 @@ function startQuiz () {
  //     --assign it an onclick function
  //         ..check if user answered correctly or not
   
-};
-
-// show quiz result function 
-function quizResults () {
-
 };
 
 // timer function
@@ -142,11 +144,39 @@ quizArea.className = 'show';
       timerEl.textContent = timeLeft
 
       if (timeLeft < 0) {
+        timerEl.textContent = '';
         clearInterval(holdTime);
         //timesUp();
-        timerEl.textContent = "You have ran out of time!";
+        alert("You have ran out of time!");
       }
     }, 1000);
     
   }
 })
+
+function resukts () {
+  questions.innerHTML = '';
+  timeLeft = '';
+
+
+  var createH3 = document.createElement('h3');
+  createH3.setAttribute("id", "createH3");
+
+  questionsDiv.appendChild(createH3);
+
+} 
+
+// at the bottom should be a click event function that creates a form for the person completing the quiz
+// // the form consist of if else conditionals and a var that creates a score total. It wouls be written out in this form:
+
+
+// addEventListener("click", function() {
+//   var info = createInput.value;
+
+//   if (info === null) {
+//     console.log(info);
+//   } 
+
+//   var totalScore = JSON.parse(---)
+// } 
+
