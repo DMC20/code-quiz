@@ -2,8 +2,8 @@ var emailInput = document.querySelector('#email');
 var passwordInput = document.querySelector('#password');
 var signUpButton = document.querySelector('#sign-up');
 var msgDiv = document.querySelector('#msg');
-var userEmailSpan = document.querySelector('#user-email');
-var userPasswordSpan = document.querySelector('#user-password');
+var userEmail = document.querySelector('#user-email');
+var userPassword = document.querySelector('#user-password');
 
 function renderLastRegistered() {
   // Retrieve the last email and password from localStorage using `getItem()`
@@ -16,8 +16,8 @@ function renderLastRegistered() {
   }
 
   // Set the text of the 'userEmailSpan' and 'userPasswordSpan' to the corresponding values from localStorage
-  userEmailSpan.textContent = email;
-  userPasswordSpan.textContent = password;
+  userEmail.textContent = email;
+  userPassword.textContent = password;
 }
 
 renderLastRegistered();
