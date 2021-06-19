@@ -1,11 +1,10 @@
 body {font-family: 'Staatliches', cursive;
+  background-color: ivory;
 }
 h1,
 h2,
-p,
-.choices,
-.startScreem,
-.startTimer {
+p
+ {
     text-align: center;
     font-size: 34px;
     font-weight: 700;
@@ -23,8 +22,12 @@ p,
     margin: 24px;
     cursor: pointer;
     font-size: 24px;
-    background-color: #247BA0;
+    background-color: #de5d83;
     color: white;
+    display: block;
+    max-width: 300px;
+    margin: auto;
+    margin-bottom: 10px;
   }
 
 
@@ -33,5 +36,11 @@ p,
 }
 
 .show{
-  display: block;
+  display: show;
+}
+
+.input-group {
+  text-align: center;
+  margin-bottom: 15px;
+  
 }

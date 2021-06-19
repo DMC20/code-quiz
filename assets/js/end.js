@@ -5,22 +5,6 @@ var msgDiv = document.querySelector('#msg');
 var userEmail = document.querySelector('#user-email');
 var userPassword = document.querySelector('#user-password');
 
-function renderLastRegistered() {
-  // Retrieve the last email and password from localStorage using `getItem()`
-  var email = localStorage.getItem('email');
-  var password = localStorage.getItem('password');
-
-  // If they are null, return early from this function
-  if (email === null || password === null) {
-    return;
-  }
-
-  // Set the text of the 'userEmailSpan' and 'userPasswordSpan' to the corresponding values from localStorage
-  userEmail.textContent = email;
-  userPassword.textContent = password;
-}
-
-renderLastRegistered();
 
 function displayMessage(type, message) {
   msgDiv.textContent = message;
@@ -43,7 +27,5 @@ signUpButton.addEventListener('click', function(event) {
     // Save email and password to localStorage using `setItem()`
     localStorage.setItem('email', email);
     localStorage.setItem('password', password);
-    // Render the last registered email and password
-    renderLastRegistered();
   }
 });

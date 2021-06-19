@@ -49,7 +49,7 @@ var quizQuestions = [
        "I Don't Know!",
   ],
   correctAnswer: "A building block in JS",
-}
+},
 ];
 // variables for targeting html elements/atrrtibutes
 var timerEl = document.getElementById('countdownTimer');
