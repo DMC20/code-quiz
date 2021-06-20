@@ -31,7 +31,7 @@ var quizQuestions = [
   correctAnswer: "Stores and manipulates text",
 },
 {
-  questions: "What does console.log do",
+  question: "What does console.log do",
   answers: [
        "Creates an arguement",
        "Creates an object",
@@ -41,7 +41,7 @@ var quizQuestions = [
   correctAnswer: "Writes a message to the console",
 },
 {
-  questions: "What is a function?",
+  question: "What is a function?",
   answers: [
        "A building block in JS",
        "An expression",
@@ -49,7 +49,7 @@ var quizQuestions = [
        "I Don't Know!",
   ],
   correctAnswer: "A building block in JS",
-},
+}
 ];
 // variables for targeting html elements/atrrtibutes
 var timerEl = document.getElementById('countdownTimer');
@@ -68,7 +68,7 @@ var score = 0;
 var currentQuestion = 0
 
 // timer ***change back to 15sec***
-var timeLeft = 15;
+var timeLeft = 20;
 var holdTime = 0;
 var penalty = 3;
 var btn;
@@ -79,21 +79,20 @@ function checkAnswer(){
   var correctAn = quizQuestions[currentQuestion].correctAnswer;
   if(choice === correctAn ){
     score++;
-    alert('Correct')  
+    // alert('Correct')  
   } else{
-    alert('Incorrect, you have lost 3 seoconds')
+    // alert('Incorrect, you have lost 3 seoconds')
     // 3 sec deducted for incorrect answer
     timeLeft = timeLeft - penalty;
   }
 
   document.getElementById('choices').innerHTML = ''
 
-
   currentQuestion++;
   
   startQuiz();
 
-  alert("You got " + score + '/' + quizQuestions.length);
+  // alert("You got " + score + '/' + quizQuestions.length);
 }
 
 
@@ -158,8 +157,6 @@ quizArea.className = 'show';
         // show resukts button
         results.className = 'show';
         //console.log(results.className);
-
-
       }
     }, 1000);
     
@@ -171,29 +168,3 @@ results.addEventListener('click',function() {
   window.location.replace('./end.html')
   
 } )
-// function endGame () {
-
-//   results.className = 'show';
-// document.getElementById('results').className = 'show';
-
-//   var createH3 = document.createElement('h3');
-//   createH3.setAttribute("id", "createH3");
-
-//   questionsDiv.appendChild(createH3);
-
-
-
-// at the bottom should be a click event function that creates a form for the person completing the quiz
-// // the form consist of if else conditionals and a var that creates a score total. It wouls be written out in this form:
-
-
-// addEventListener("click", function() {
-//   var info = createInput.value;
-
-//   if (info === null) {
-//     console.log(info);
-//   } 
-
-//   var totalScore = JSON.parse(---)
-// } 
-
