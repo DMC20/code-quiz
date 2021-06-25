@@ -89,12 +89,12 @@ function checkAnswer(){
   document.getElementById('choices').innerHTML = ''
 
   currentQuestion++;
-  
-  startQuiz();
-
-  // alert("You got " + score + '/' + quizQuestions.length);
+  if (currentQuestion === quizQuestions.length) {
+    showResult();
+  } else {
+    startQuiz();
+  }
 }
-
 
 // start quiz function 
 function startQuiz () {
@@ -118,13 +118,23 @@ function startQuiz () {
    btn.onclick = checkAnswer;
    choices.appendChild(btn);
   }
- //     -- create a button
- //     --assign it value
- //     --assign it context
- //     --assign it an onclick function
- //         ..check if user answered correctly or not
-  
 };
+
+
+function showResult () {
+  timerEl.textContent = '';
+        clearInterval(holdTime);
+        //timesUp();
+        alert("All done!");
+        alert("You got " + score + '/' + quizQuestions.length);
+
+        // hide quiz screen
+        quizArea.className = 'hide';
+
+        // show resukts button
+        results.className = 'show';
+        //console.log(results.className);
+}
 
 // timer function
 startBtnEl.addEventListener("click", function(){
@@ -144,19 +154,7 @@ quizArea.className = 'show';
       timerEl.textContent = timeLeft
 
       if (timeLeft < 0) {
-        timerEl.textContent = '';
-        clearInterval(holdTime);
-        //timesUp();
-        alert("You have ran out of time!");
-        alert("You got " + score + '/' + quizQuestions.length);
-        
-
-        // hide quiz screen
-        quizArea.className = 'hide';
-
-        // show resukts button
-        results.className = 'show';
-        //console.log(results.className);
+        showResult();
       }
     }, 1000);
     
